@@ -151,10 +151,7 @@
                 }
             ],
             buttons: {
-                buttons: [{
-                        extend: 'copy',
-                        className: 'btn'
-                    },
+                buttons: [
                     {
                         extend: 'csv',
                         className: 'btn'

@@ -409,3 +409,10 @@
     </div>
 
 @endsection
+
+@push('js')
+<script src="{{ asset('assets/js/apps/mailbox-chat.js') }}"></script>
+    
+@endpush
+
+

@@ -14,14 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/test', function () {
-    return  dd(Country::first()->status);
-});
-
 
 Route::group(['middleware' => 'auth'], function () {
-
-
 
     Route::get('dashboard/home', 'HomeController@index')->name('home');
 
@@ -29,6 +23,21 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('admins', 'AdminController@index')->name('admins.index');
 
+    
+    Route::view('roles' ,'pages.Role.index' , [
+        'category_name' => 'admins_roles',
+        'page_name' => 'roles',
+        'has_scrollspy' => 0,
+        'scrollspy_offset' => '',
+    ])->name('roles.index');
+
+    
+    Route::view('roles/create' ,'pages.Role.create' , [
+        'category_name' => 'admins_roles',
+        'page_name' => 'roles',
+        'has_scrollspy' => 0,
+        'scrollspy_offset' => '',
+    ])->name('roles.create');
     // $this->middleware
 
     Route::get('/analytics', function () {

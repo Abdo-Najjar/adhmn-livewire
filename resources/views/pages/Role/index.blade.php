@@ -17,8 +17,8 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="s_status">Status</label>
-                                    <select class="form-control select2-hidden-accessible basic" id="s_status" tabindex="-1"
-                                        aria-hidden="true">
+                                    <select data-select2-id="status" class="form-control select2-hidden-accessible select2"
+                                        id="s_status" tabindex="-1" aria-hidden="true">
                                         <option value="">Choose</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="m-b-15">
-                        <a href="{{ route('countries.create') }}" id="info" class="btn btn-primary"><i
+                        <a href="{{ route('roles.create') }}" id="info" class="btn btn-primary"><i
                                 class="fa fa-plus"></i> Add</a>
                         <button value="1" disabled="" class="status_btn btn btn-success">
                             Activate </button>
@@ -49,16 +49,13 @@
             <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                 <div class="widget-content widget-content-area br-6">
                     <div class="table-responsive mb-4 mt-4">
-                        <table id="html5-extension" class="table table-hover non-hover" style="width:100%">
+                        <table id="html5-extension" class="table table-hover non-hover " style="width:100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>ID</th>
                                     <th>Name(ar)</th>
                                     <th>Name(en)</th>
-                                    <th>currency(ar)</th>
-                                    <th>currency(en)</th>
-                                    <th>Tax</th>
                                     <th>Status</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
@@ -90,7 +87,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('api.countries.datatable') }}",
+                url: "{{ route('api.cities.datatable') }}",
                 function(d) {
                     // d.status = $('#status').val(),
                     // d.search = $('input[type="search"]').val()
@@ -123,19 +120,6 @@
                 {
                     data: 'name_en',
                     name: 'name_en'
-                },
-
-                {
-                    data: 'currency_ar',
-                    name: 'currency_ar'
-                },
-                {
-                    data: 'currency_en',
-                    name: 'currency_en'
-                },
-                {
-                    data: 'tax',
-                    name: 'tax'
                 },
                 {
                     data: 'status',
@@ -189,9 +173,9 @@
             "pageLength": 5
         });
 
-        var ss = $(".basic").select2({
-            tags: true,
-        });
+
+
+        $(".select2").select2();
 
     </script>
 @endpush
