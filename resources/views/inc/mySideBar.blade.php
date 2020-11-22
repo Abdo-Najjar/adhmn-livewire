@@ -41,9 +41,9 @@
 
 
 {{-- Admins & roles --}}
-<li class="menu {{ $category_name === 'admins_roles' ? 'active' : '' }}">
-    <a href="#admins_roles" data-active="{{ $category_name === 'admins_roles' ? 'true' : 'false' }}"
-        data-toggle="collapse" aria-expanded="{{ $category_name === 'admins_roles' ? 'true' : 'false' }}"
+<li class="menu {{ $category_name === 'admins & roles' ? 'active' : '' }}">
+    <a href="#admins_roles" data-active="{{ $category_name === 'admins & roles' ? 'true' : 'false' }}"
+        data-toggle="collapse" aria-expanded="{{ $category_name === 'admins & roles' ? 'true' : 'false' }}"
         class="dropdown-toggle">
         <div class="">
 
@@ -64,10 +64,10 @@
             </svg>
         </div>
     </a>
-    <ul class="collapse submenu list-unstyled {{ $category_name === 'admins_roles' ? 'show' : '' }}" id="admins_roles"
+    <ul class="collapse submenu list-unstyled {{ $category_name === 'admins & roles' ? 'show' : '' }}" id="admins_roles"
         data-parent="#accordionExample">
-        <li class="{{ $page_name === 'country' ? 'active' : '' }}">
-            <a href="{{ route('countries.index') }}"> Admins </a>
+        <li class="{{ $page_name === 'admins' ? 'active' : '' }}">
+            <a href="{{ route('admins.index') }}"> Admins </a>
         </li>
         <li class="{{ $page_name === 'roles' ? 'active' : '' }}">
             <a href="{{ route('roles.index') }}"> Roles </a>

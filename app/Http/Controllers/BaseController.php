@@ -105,7 +105,7 @@ class BaseController extends Controller
      *
      * @return string
      */
-    private function getViewFolderName(): string
+    protected function getViewFolderName(): string
     {
         return class_basename($this->model);
     }

@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
 
-    public function index()
-    {
-        $data = [
-            'category_name' => 'dashboard',
-            'page_name' => 'home',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
+    protected string $category_name = 'admins & roles';
+    protected string $page_name = 'admins';
 
-        ];
-        return view('pages.Admin.index')->with($data);
+    public function __construct(User $user)
+    {
+        parent::__construct($user);
+    }
+
+    protected function getViewFolderName(): string
+    {
+        return 'Admin';
     }
 
 }
