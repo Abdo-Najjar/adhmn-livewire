@@ -54,5 +54,5 @@
     @include('inc.scripts')
     @stack('js')
     @livewireScripts
-</body>
+  </body>
 </html>

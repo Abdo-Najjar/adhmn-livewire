@@ -77,9 +77,9 @@
 {{-- end admins and roles --}}
 
 {{-- customers --}}
-<li onclick="window.location.href = '{{ route('smartDetactions') }}' "
+<li onclick="window.location.href = '{{ route('customers.index') }}' "
     class="menu {{ $category_name === 'customers' ? 'active' : '' }}">
-    <a href="{{ route('smartDetactions') }}" data-active="{{ $category_name === 'customers' ? 'true' : 'false' }}"
+    <a href="{{ route('customers.index') }}" data-active="{{ $category_name === 'customers' ? 'true' : 'false' }}"
         data-toggle="collapse" aria-expanded="{{ $category_name === 'customers' ? 'true' : 'false' }}"
         class="dropdown-toggle">
         <div class="">
@@ -124,16 +124,16 @@
     </a>
     <ul class="collapse submenu list-unstyled {{ $category_name === 'serviceProivders' ? 'show' : '' }}"
         id="serviceProivders" data-parent="#accordionExample">
-        <li class="{{ $page_name === 'country' ? 'active' : '' }}">
-            <a href="{{ route('countries.index') }}"> Service Providers </a>
+        <li class="{{ $page_name === 'serviceProvider' ? 'active' : '' }}">
+            <a href="{{ route('serviceProvider.index') }}"> Service Providers </a>
         </li>
 
         <li class="{{ $page_name === 'country' ? 'active' : '' }}">
-            <a href="{{ route('countries.index') }}"> Trace <br> Service Providers</a>
+            <a href=""> Trace <br> Service Providers</a>
         </li>
 
         <li class="{{ $page_name === 'city' ? 'active' : '' }}">
-            <a href="{{ route('cities.index') }}"> Distribution <br>Of Services</a>
+            <a href=""> Distribution <br>Of Services</a>
         </li>
     </ul>
 </li>
