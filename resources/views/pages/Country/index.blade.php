@@ -8,41 +8,41 @@
             <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                 <div class="widget-content widget-content-area br-6">
 
-                    <div class="m-b-15">
+                    <div>
                         <form id="search_form">
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="s_name">Name</label>
-                                    <input type="text" class="form-control" id="s_name" placeholder="Name">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Name">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="s_status">Status</label>
-                                    <select class="form-control select2-hidden-accessible basic" id="s_status" tabindex="-1"
+                                    <label for="status">Status</label>
+                                    <select class="form-control select2-hidden-accessible basic" id="status" tabindex="-1"
                                         aria-hidden="true">
-                                        <option value="">Choose</option>
+                                        <option selected value="">Choose..</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3 align-self-end">
                                     <input type="submit" id="search_btn" class="btn btn-info mb-4" value="Search">
-                                    <input type="submit" id="clear_btn" class="btn btn-secondary mb-4" value="Clear search">
+                                    <input type="submit" id="clear_btn" class="btn btn-primary mb-4" value="Clear search">
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <div class="m-b-15">
-                        <a href="{{ route('countries.create') }}" id="info" class="btn btn-primary"><i
-                                class="fa fa-plus"></i> Add</a>
-                        <button value="1" disabled="" class="status_btn btn btn-success">
-                            Activate </button>
-                        <button value="0" disabled="" class="status_btn btn btn-secondary">
-                            Deactivate </button>
-                        <button disabled="" id="delete_btn" class="delete-btn btn btn-danger"><i class="fa fa-trash-o"></i>
-                            Delete</button>
-                    </div>
+                        <div class="form-row">
 
+                            <a href="{{ route('countries.create') }}" id="info" class="btn btn-primary mr-1"><i
+                                    class="fa fa-plus"></i> Add</a>
+                            <button value="1" disabled="" class="status_btn btn btn-success mr-1"> Activate </button>
+                            <button value="0" disabled="" class="status_btn btn btn-secondary mr-1">Deactivate </button>
+                            <button disabled="" id="delete_btn" class="delete-btn btn btn-danger mr-1"><i
+                                    class="fa fa-trash-o"></i>Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -86,17 +86,17 @@
     <script src="{{ asset('plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
     <script>
-        $('#html5-extension').DataTable({
+        const dataTable = $('#html5-extension').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
                 url: "{{ route('api.countries.datatable') }}",
-                function(d) {
-                    // d.status = $('#status').val(),
-                    // d.search = $('input[type="search"]').val()
+                data: function(d) {
+                    d.status = $('#status').val(),
+                    d.name = $('#name').val()
                 },
             },
-            dom: '<"row"<"col-md-12"<"row"<"col-md-2"l><"col-md-4"B><"col-md-6"f> > ><"col-md-12"rt> <"col-md-12"<"row"<"col-md-5"i><"col-md-7"p>>> >',
+            dom: '<"row"<"col-md-12"<"row"<"col-md-2"l><"col-md-4"B> > ><"col-md-12"rt> <"col-md-12"<"row"<"col-md-5"i><"col-md-7"p>>> >',
             "columnDefs": [{
                 className: "text-center",
                 "targets": [-1]
@@ -158,8 +158,7 @@
                 }
             ],
             buttons: {
-                buttons: [
-                    {
+                buttons: [{
                         extend: 'csv',
                         className: 'btn'
                     },
@@ -189,7 +188,19 @@
             "pageLength": 5
         });
 
-        var ss = $(".basic").select2({
+        //Draw table
+
+        // Name filter
+        document.querySelector('#name').addEventListener('keyup', function() {
+            dataTable.draw();
+        });
+
+        document.querySelector('#status').onchange = function() {
+            dataTable.draw();
+        }
+
+
+        $(".basic").select2({
             tags: true,
         });
 
