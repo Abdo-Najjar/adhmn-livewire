@@ -8,7 +8,7 @@
 
                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-                        @livewire('country.edit', ['country' => $model]))
+                        @livewire('country.edit', ['country' => $model])
 
                     </div>
 

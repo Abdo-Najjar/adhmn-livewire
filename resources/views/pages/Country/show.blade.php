@@ -27,10 +27,7 @@
                                             <td>Name En</td>
                                             <td>{{ $model->getTranslation('name','en') }}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Name En</td>
-                                            <td>{{ $model->getTranslation('name','en') }}</td>
-                                        </tr>
+                                       
                                         <tr>
                                             <td>Currency Ar</td>
                                             <td>{{ $model->getTranslation('currency','ar') }}</td>
